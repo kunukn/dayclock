@@ -1,6 +1,6 @@
 # dayclock
 
-https://dayclock.app
+Demo: https://dayclock.app
 
 ## Project setup
 ```
