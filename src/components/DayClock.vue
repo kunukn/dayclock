@@ -87,7 +87,13 @@
     <div v-show="!isDebugActive" class="theme-selector">
       <button class="theme" aria-label="hotpink" @click="selectTheme1"></button>
       <button class="theme" aria-label="blue" @click="selectTheme2"></button>
-      <button class="theme" aria-label="debug" @click="toggleDebug">D</button>
+      <button
+        class="theme toggle-debug"
+        aria-label="debug"
+        @click="toggleDebug"
+      >
+        D
+      </button>
     </div>
   </div>
 </template>
@@ -242,7 +248,7 @@ function rangeMap(x, a, b, c, d) {
 }
 </script>
 
-<style scope lang="scss">
+<style scoped lang="scss">
 $size: 80vmin;
 $day-angle: 51.4285714286deg; // 360 deg / 7 days
 $day-skew: 38.5714285714deg; // 90 deg - $day-angle
@@ -530,6 +536,10 @@ button,
     &:nth-child(2) {
       background: rgb(0, 105, 180);
     }
+  }
+
+  .toggle-debug {
+    padding-top: 1px;
   }
 }
 
