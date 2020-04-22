@@ -75,13 +75,7 @@
         >auto-update clock:
         <input type="checkbox" v-model="isUpdateClockActive"
       /></label>
-      <input
-        type="range"
-        min="1"
-        max="100"
-        step="1"
-        @input="debugChangeRandeSlider"
-      />
+      <input type="range" min="0" max="100" step="1" @input="debugInputRange" />
       <button @click="toggleDebug">close</button>
     </div>
     <div v-show="!isDebugActive" class="theme-selector">
@@ -156,7 +150,7 @@ export default {
   },
   methods: {
     updateClock(getDateMethod) {
-      let { date, d, h, m, s } = getDateMethod()
+      let { date, d, h, m, s } = getDateMethod ? getDateMethod() : getDate()
 
       if (d === 0) d = 7 // Sunday is last
 
@@ -182,12 +176,12 @@ export default {
       root.style.setProperty('--color-theme-1', '0, 105, 180')
       root.style.setProperty('--color-theme-2', '30,	144,	255')
     },
-    debugChangeRandeSlider(event) {
+    debugInputRange(event) {
       let date = new Date()
       let first = new Date(2020, 1, 3, 0, 0, 0).getTime()
       let last = new Date(2020, 1, 9, 23, 59, 59).getTime()
 
-      let day = rangeMap(event.target.value, 1, 100, first, last)
+      let day = rangeMap(event.target.value, 0, 100, first, last)
 
       let debugDate = new Date(day)
 
@@ -206,12 +200,12 @@ export default {
     },
   },
   created() {
-    this.updateClock(getDate)
+    this.updateClock()
   },
   mounted() {
     const second = 1000
     this.intervalKey = setInterval(() => {
-      this.isUpdateClockActive && this.updateClock(getDate)
+      this.isUpdateClockActive && this.updateClock()
     }, 10 * second)
   },
   beforeDestroy() {

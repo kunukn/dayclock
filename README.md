@@ -2,6 +2,8 @@
 
 Demo: https://dayclock.app
 
+![test](demo/dayclock.png "dayclock")
+
 ## Project setup
 ```
 yarn install
