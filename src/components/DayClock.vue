@@ -288,8 +288,8 @@ button,
 
 .clock {
   width: 100vw;
-  height: 100vh;
-  height: -webkit-fill-available;
+  min-height: 100vh;
+  _min-height: -webkit-fill-available;
   overflow: hidden;
 }
 
