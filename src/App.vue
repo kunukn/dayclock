@@ -42,4 +42,10 @@ body {
   color: #2c3e50;
   overflow: hidden;
 }
+
+.-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

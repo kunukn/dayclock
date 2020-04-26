@@ -1,5 +1,5 @@
 <template>
-  <div class="clock">
+  <div class="clock -center">
     <div class="container">
       <div class="days-pie-chart">
         <div :class="[{ active: activeDay === 1 }, 'day day--1']"></div>
@@ -56,7 +56,7 @@
         :style="clockDayInfoStyle"
         v-show="showPercentages"
       >
-        <div class="day" :style="clockDayInfoTextStyle">
+        <div class="day -center" :style="clockDayInfoTextStyle">
           <div>
             <span class="number">{{ dayPercentageDisplay }}</span
             ><span>%</span>
@@ -74,7 +74,10 @@
         :style="clockArmStyleText"
         v-show="showPercentages"
       >
-        <div class="clock-arm-text-inner" :style="clockArmInnerStyleText">
+        <div
+          class="clock-arm-text-inner -center"
+          :style="clockArmInnerStyleText"
+        >
           <div>
             <div>Week {{ weekNumber }}</div>
             <span class="number">{{ weekPercentageDisplay }}</span
@@ -286,8 +289,8 @@ button,
 .clock {
   width: 100vw;
   height: 100vh;
-  display: grid;
-  place-items: center;
+  height: -webkit-fill-available;
+  overflow: hidden;
 }
 
 .clock-arm {
@@ -337,8 +340,6 @@ button,
     text-align: left;
     color: rgba(var(--color-theme-2), 1);
     font-weight: bold;
-    display: grid;
-    place-items: center;
     font-size: 14px;
     @media (min-height: 500px) and (min-width: 500px) {
       font-size: 16px;
@@ -367,8 +368,6 @@ button,
     line-height: 1;
     text-align: center;
     border-radius: 50%;
-    display: grid;
-    place-items: center;
     width: 40px;
     height: 40px;
     color: white;
