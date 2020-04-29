@@ -365,6 +365,7 @@ button,
   position: absolute;
   top: 4px;
   right: 4px;
+  color: rgba(var(--color-text), 1);
   input[type='range'] {
     margin-left: 2px;
     margin-right: 6px;
@@ -372,7 +373,7 @@ button,
   button {
     box-shadow: 0 0 0 1px rgba(var(--color-text), 1);
     padding: 4px 8px;
-    color: rgba(var(--color-text), 1);
+    color: inherit;
   }
 }
 </style>
