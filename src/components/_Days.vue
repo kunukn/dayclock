@@ -65,7 +65,7 @@ export default {
     width: $size;
     height: $size;
     text-align: center;
-    color: gray;
+    color: rgba(var(--color-text), 1);
     transition: color 500ms;
 
     @for $i from 1 through 7 {

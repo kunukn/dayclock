@@ -152,12 +152,14 @@ export default {
       root.style.setProperty('--color-1', '255, 105, 180')
       root.style.setProperty('--color-2', '255, 20, 147')
       root.style.setProperty('--color-bg', '255, 255, 255')
+      root.style.setProperty('--color-text', '128, 128, 128')
     },
     selectTheme2() {
       let root = document.documentElement
       root.style.setProperty('--color-1', '0, 105, 180')
       root.style.setProperty('--color-2', '30,	144,	255')
       root.style.setProperty('--color-bg', '255, 255, 255')
+      root.style.setProperty('--color-text', '128, 128, 128')
     },
     debugInputRange(event) {
       let date = new Date()
@@ -197,6 +199,9 @@ export default {
     }
     if (params.bg) {
       root.style.setProperty('--color-bg', params.bg)
+    }
+    if (params.text) {
+      root.style.setProperty('--color-text', params.text)
     }
   },
   mounted() {
@@ -322,7 +327,7 @@ button,
     height: 30px;
     font-size: 30px;
     line-height: 1;
-    color: gray;
+    color: rgba(var(--color-text), 1);
 
     + .theme {
       margin-left: 10px;

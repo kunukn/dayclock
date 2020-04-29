@@ -19,6 +19,7 @@ export default {
 :root {
   --color-1: 255, 105, 180;
   --color-2: 255, 20, 147;
+  --color-text: 128, 128, 128;
   --color-bg: 255, 255, 255;
 }
 
