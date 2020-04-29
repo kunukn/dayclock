@@ -38,6 +38,12 @@ $screen-lg-min: 1280px - 16px;
 // Large tablets and desktops
 $screen-xl-min: 1920px - 16px;
 
+@mixin medium-squared {
+  @media (min-height: 500px) and (min-width: 500px) {
+    @content;
+  }
+}
+
 // Small devices
 @mixin sm {
   @media (min-width: #{$screen-sm-min}) {

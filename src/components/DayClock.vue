@@ -253,8 +253,8 @@ button,
     bottom: 0;
     left: calc(50% - #{$clock-arm-size-width/2});
     width: $clock-arm-size-width;
-    border-radius: $clock-arm-size-width;
     height: $clock-arm-size-height;
+    border-radius: $clock-arm-size-width;
     background: rgba(var(--color-2), 1);
     z-index: -1;
   }
@@ -276,14 +276,14 @@ button,
     left: 0;
     width: 6em;
     height: $size;
-    @media (min-height: 500px) and (min-width: 500px) {
+    @include medium-squared {
       height: 3em;
     }
     text-align: left;
     color: rgba(var(--color-2), 1);
     font-weight: bold;
     font-size: 14px;
-    @media (min-height: 500px) and (min-width: 500px) {
+    @include medium-squared {
       font-size: 16px;
     }
   }
@@ -294,8 +294,8 @@ button,
 }
 
 .container {
-  width: $size;
-  height: $size;
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 0 0 1px $border-color;
@@ -303,15 +303,14 @@ button,
 
 .days-pie-chart-center-circle {
   _display: none;
-  $size2: $size / 3;
   position: absolute;
-  top: calc(50% - #{$size2 / 2});
-  left: calc(50% - #{$size2 / 2});
-  width: $size2;
-  height: $size2;
+  top: 50%;
+  left: 50%;
+  width: var(--size-inner-circle);
+  height: var(--size-inner-circle);
   background: rgba(var(--color-bg), 1);
   border-radius: 50%;
-  transform: rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
   box-shadow: 0 0 0 1px $border-color;
 }
 
@@ -339,10 +338,6 @@ button,
     &:nth-child(2) {
       background: rgb(0, 105, 180);
     }
-  }
-
-  .toggle-debug {
-    padding-top: 1px;
   }
 }
 
