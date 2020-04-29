@@ -1,12 +1,12 @@
 <template>
   <div class="days-pie-chart">
-    <div :class="[{ active: activeDay === 1 }, 'day day--1']"></div>
-    <div :class="[{ active: activeDay === 2 }, 'day day--2']"></div>
-    <div :class="[{ active: activeDay === 3 }, 'day day--3']"></div>
-    <div :class="[{ active: activeDay === 4 }, 'day day--4']"></div>
-    <div :class="[{ active: activeDay === 5 }, 'day day--5']"></div>
-    <div :class="[{ active: activeDay === 6 }, 'day day--6']"></div>
-    <div :class="[{ active: activeDay === 7 }, 'day day--7']"></div>
+    <div :class="[{ active: activeDay === 1 }, 'day day--1']"><div></div></div>
+    <div :class="[{ active: activeDay === 2 }, 'day day--2']"><div></div></div>
+    <div :class="[{ active: activeDay === 3 }, 'day day--3']"><div></div></div>
+    <div :class="[{ active: activeDay === 4 }, 'day day--4']"><div></div></div>
+    <div :class="[{ active: activeDay === 5 }, 'day day--5']"><div></div></div>
+    <div :class="[{ active: activeDay === 6 }, 'day day--6']"><div></div></div>
+    <div :class="[{ active: activeDay === 7 }, 'day day--7']"><div></div></div>
   </div>
 </template>
 
@@ -28,6 +28,14 @@ export default {
   height: $size;
   transform: rotate($day-skew);
   pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-bg), 1),
+    0 0 0 1px rgba(var(--color-bg), 1);
+
+  background: radial-gradient(
+    transparent,
+    rgba(var(--color-1), 0.5),
+    transparent
+  );
 
   .day {
     position: absolute;
@@ -48,11 +56,25 @@ export default {
       }
     }
 
+    > * {
+      position: absolute;
+      background: rgba(var(--color-bg), 1);
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+    }
+
     &.active {
       background: radial-gradient(
+        transparent,
         rgba(var(--color-1), 1),
-        rgba(var(--color-1), 0.9)
+        transparent
       );
+      > * {
+        background: transparent;
+      }
     }
   }
 }

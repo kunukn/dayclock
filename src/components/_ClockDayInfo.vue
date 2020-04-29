@@ -1,12 +1,12 @@
-<template>
+<template functional>
   <div
     class="clock-day-info"
-    :style="clockDayInfoStyle"
-    v-show="showPercentages"
+    :style="props.clockDayInfoStyle"
+    v-show="props.showPercentages"
   >
-    <div class="day -center" :style="clockDayInfoTextStyle">
+    <div class="day -center" :style="props.clockDayInfoTextStyle">
       <div>
-        <span class="number">{{ dayPercentageDisplay }}</span
+        <span class="number">{{ props.dayPercentageDisplay }}</span
         ><span>%</span>
       </div>
     </div>
@@ -29,13 +29,14 @@ export default {
 .clock-day-info {
   pointer-events: none;
   position: absolute;
-  height: $size / 3;
+  height: calc(var(--size) / 3);
+  // $size / 3;
   width: 40px;
   bottom: calc(50%);
   left: calc(50% - 20px);
   transform-origin: 50% 100%;
   font-size: 14px;
-  @media (min-height: 500px) and (min-width: 500px) {
+  @include medium-squared {
     font-size: 16px;
   }
 
