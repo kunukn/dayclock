@@ -1,53 +1,9 @@
 <template>
   <div class="clock -center">
     <div class="container">
-      <div class="days-pie-chart">
-        <div :class="[{ active: activeDay === 1 }, 'day day--1']"></div>
-        <div :class="[{ active: activeDay === 2 }, 'day day--2']"></div>
-        <div :class="[{ active: activeDay === 3 }, 'day day--3']"></div>
-        <div :class="[{ active: activeDay === 4 }, 'day day--4']"></div>
-        <div :class="[{ active: activeDay === 5 }, 'day day--5']"></div>
-        <div :class="[{ active: activeDay === 6 }, 'day day--6']"></div>
-        <div :class="[{ active: activeDay === 7 }, 'day day--7']"></div>
-      </div>
+      <DaysPieChart :activeDay="activeDay" />
 
-      <div class="days">
-        <div :class="[{ active: activeDay === 1 }, 'day day--1']">
-          <p class="text" aria-label="monday" role="presentation">
-            <i>m</i><i>o</i><i>n</i>
-          </p>
-        </div>
-        <div :class="[{ active: activeDay === 2 }, 'day day--2']">
-          <p class="text" aria-label="tuesday" role="presentation">
-            <i>t</i><i>u</i><i>e</i>
-          </p>
-        </div>
-        <div :class="[{ active: activeDay === 3 }, 'day day--3']">
-          <p class="text" aria-label="wednesday" role="presentation">
-            <i>w</i><i>e</i><i>d</i>
-          </p>
-        </div>
-        <div :class="[{ active: activeDay === 4 }, 'day day--4']">
-          <p class="text" aria-label="thursday" role="presentation">
-            <i>t</i><i>h</i><i>u</i>
-          </p>
-        </div>
-        <div :class="[{ active: activeDay === 5 }, 'day day--5']">
-          <p class="text" aria-label="friday" role="presentation">
-            <i>f</i><i>r</i><i>i</i>
-          </p>
-        </div>
-        <div :class="[{ active: activeDay === 6 }, 'day day--6']">
-          <p class="text" aria-label="saturday" role="presentation">
-            <i>s</i><i>a</i><i>t</i>
-          </p>
-        </div>
-        <div :class="[{ active: activeDay === 7 }, 'day day--7']">
-          <p class="text" aria-label="sunday" role="presentation">
-            <i>s</i><i>u</i><i>n</i>
-          </p>
-        </div>
-      </div>
+      <Days :activeDay="activeDay" />
 
       <div class="days-pie-chart-center-circle"></div>
 
@@ -120,6 +76,10 @@ const dayAngle = 51.4285714286 // 360 deg / 7 days
 
 export default {
   name: 'DayClock',
+  components: {
+    DaysPieChart: () => import('./_DaysPieChart'),
+    Days: () => import('./_Days'),
+  },
   props: {},
   data() {
     return {
@@ -384,127 +344,8 @@ button,
   box-shadow: 0 0 0 1px $border-color;
 }
 
-.days-pie-chart {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: $size;
-  height: $size;
-  transform: rotate($day-skew);
-  pointer-events: none;
-
-  .day {
-    position: absolute;
-    box-shadow: 0 0 0 1px $border-color;
-    width: $size;
-    height: $size;
-    width: 100%;
-    height: 100%;
-    transform-origin: 100% 100%;
-    left: calc(50% - #{$size});
-    top: calc(50% - #{$size});
-    transition: background 500ms;
-    pointer-events: all;
-
-    @for $i from 1 through 7 {
-      &--#{$i} {
-        transform: rotate($day-angle * $i) skew($day-skew);
-      }
-    }
-
-    &.active {
-      background: radial-gradient(
-        rgba(var(--color-theme-1), 0.9),
-        rgba(var(--color-theme-1), 0.8)
-      );
-    }
-  }
-}
-
-.days {
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: $size;
-  height: $size;
-  transform: rotate(-26deg);
-
-  .day {
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: $size;
-    height: $size;
-    text-align: center;
-    color: gray;
-    transition: color 500ms;
-
-    @for $i from 1 through 7 {
-      &--#{$i} {
-        transform: rotate($day-angle * $i);
-      }
-    }
-
-    &.active {
-      color: white;
-    }
-
-    .text {
-      pointer-events: all;
-      padding-top: $font-air;
-      user-select: none;
-      text-transform: uppercase;
-
-      font-weight: bold;
-      outline: 1px solid $border-color;
-      line-height: 1;
-
-      i {
-        font-size: $font-size;
-        line-height: inherit;
-        font-style: normal;
-        display: inline-block;
-        min-width: 0.8em;
-
-        &:nth-child(1) {
-          transform: rotate(-$font-deg);
-        }
-        &:nth-child(2) {
-          transform: translateY(-$font-y);
-        }
-        &:nth-child(3) {
-          transform: rotate($font-deg);
-        }
-      }
-    }
-    &--3,
-    &--4,
-    &--5 {
-      .text {
-        padding-top: 0;
-        padding-bottom: $font-air;
-        transform: rotate(0.5turn);
-
-        i {
-          &:nth-child(1) {
-            transform: rotate($font-deg);
-          }
-          &:nth-child(2) {
-            transform: translateY($font-y);
-          }
-          &:nth-child(3) {
-            transform: rotate(-$font-deg);
-          }
-        }
-      }
-    }
-  }
-}
-
 .theme-selector {
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   top: 6px;
