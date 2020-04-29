@@ -1,0 +1,74 @@
+/*
+From 
+https://medium.com/codeartisan/breakpoints-and-media-queries-in-scss-46e8f551e2f2
+
+Usage example: 
+
+.container {
+    padding: 0 15px;
+    // 576px window width and more
+    @include sm {
+        padding: 0 20px;
+    }
+    // 992px window width and more
+    @include lg {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1100px;
+    }
+    // 1400px window width and more
+    @include rwd(1400) {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+*/
+
+// Breakpoints
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 600px;
+
+// Small tablets (portrait view)
+$screen-md-min: 960px;
+
+// Tablets and small desktops
+$screen-lg-min: 1280px - 16px;
+
+// Large tablets and desktops
+$screen-xl-min: 1920px - 16px;
+
+// Small devices
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+// Custom devices
+@mixin rwd($screen) {
+  @media (min-width: $screen+'px') {
+    @content;
+  }
+}

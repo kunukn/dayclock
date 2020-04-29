@@ -260,22 +260,6 @@ function rangeMap(x, a, b, c, d) {
 </script>
 
 <style scoped lang="scss">
-$size: 80vmin;
-$day-angle: 51.4285714286deg; // 360 deg / 7 days
-$day-skew: 38.5714285714deg; // 90 deg - $day-angle
-$border-color: black;
-$border-color: transparent;
-$clock-arm-size: 4vmin;
-$clock-arm-size-width: 4px;
-$clock-arm-size-height: 12vmin;
-
-$font-size: 8vmin;
-$font-y: 1vmin;
-$font-deg: 12deg;
-$font-air: 3vmin;
-
-// @debug 'hello from SCSS';
-
 button,
 .button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
