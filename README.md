@@ -4,7 +4,7 @@ Demo:
 * https://dayclock.app
 * https://dayclock.app/?numbers=0&color1=255,255,255&color2=200,200,0&bg=0,0,0&text=255,255,255
 
-<img src="demo/dayclock.png" alt="demo" style="max-width: 300px;height: auto;">
+![demo](demo/dayclock.png "dayclock")
 
 ## Project setup
 ```
