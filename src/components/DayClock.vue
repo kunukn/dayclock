@@ -68,6 +68,7 @@ import rangeMap from '@/utils/rangeMap'
 import getQueryParams from '@/utils/getQueryParams'
 import getDate from '@/utils/getDate'
 import getWeekNumber from '@/utils/getWeekNumber'
+import hexToRgb from '@/utils/hexToRgb'
 
 const totalDaySeconds = 86400
 const totalWeekSeconds = 604800
@@ -181,7 +182,7 @@ export default {
     toggleDebug() {
       this.isDebugActive = !this.isDebugActive
       if (this.isDebugActive) this.isUpdateClockActive = false
-      if (!this.isDebugActive) this.isUpdateClockActive = true
+      else this.isUpdateClockActive = true
     },
   },
   created() {
@@ -195,16 +196,32 @@ export default {
     if (+params.numbers === 0) this.showPercentages = false
 
     if (params.color1) {
-      root.style.setProperty('--color-1', params.color1)
+      let rgb = hexToRgb('#' + params.color1)
+      root.style.setProperty(
+        '--color-1',
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : params.color1
+      )
     }
     if (params.color2) {
-      root.style.setProperty('--color-2', params.color2)
+      let rgb = hexToRgb('#' + params.color2)
+      root.style.setProperty(
+        '--color-2',
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : params.color2
+      )
     }
     if (params.bg) {
-      root.style.setProperty('--color-bg', params.bg)
+      let rgb = hexToRgb('#' + params.bg)
+      root.style.setProperty(
+        '--color-bg',
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : params.bg
+      )
     }
     if (params.text) {
-      root.style.setProperty('--color-text', params.text)
+      let rgb = hexToRgb('#' + params.text)
+      root.style.setProperty(
+        '--color-text',
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : params.text
+      )
     }
   },
   mounted() {
