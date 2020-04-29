@@ -13,6 +13,13 @@ module.exports = {
       })
     )
     config.resolve.alias['~'] = path.resolve(__dirname, '')
+
+    config.optimization = {
+      splitChunks: {
+        minSize: 10000,
+        maxSize: 200000,
+      },
+    }
   },
 
   css: {
