@@ -1,6 +1,8 @@
 # dayclock
 
-Demo: https://dayclock.app
+Demo: 
+* https://dayclock.app
+* https://dayclock.app/?numbers=0&color1=255,255,255&color2=200,200,0&bg=0,0,0
 
 ![test](demo/dayclock.png "dayclock")
 
