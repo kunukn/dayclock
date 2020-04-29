@@ -1,36 +1,36 @@
-<template>
+<template functional>
   <div class="days">
-    <div :class="[{ active: activeDay === 1 }, 'day day--1']">
+    <div :class="[{ active: props.activeDay === 1 }, 'day day--1']">
       <p class="text" aria-label="monday" role="presentation">
         <i>m</i><i>o</i><i>n</i>
       </p>
     </div>
-    <div :class="[{ active: activeDay === 2 }, 'day day--2']">
+    <div :class="[{ active: props.activeDay === 2 }, 'day day--2']">
       <p class="text" aria-label="tuesday" role="presentation">
         <i>t</i><i>u</i><i>e</i>
       </p>
     </div>
-    <div :class="[{ active: activeDay === 3 }, 'day day--3']">
+    <div :class="[{ active: props.activeDay === 3 }, 'day day--3']">
       <p class="text" aria-label="wednesday" role="presentation">
         <i>w</i><i>e</i><i>d</i>
       </p>
     </div>
-    <div :class="[{ active: activeDay === 4 }, 'day day--4']">
+    <div :class="[{ active: props.activeDay === 4 }, 'day day--4']">
       <p class="text" aria-label="thursday" role="presentation">
         <i>t</i><i>h</i><i>u</i>
       </p>
     </div>
-    <div :class="[{ active: activeDay === 5 }, 'day day--5']">
+    <div :class="[{ active: props.activeDay === 5 }, 'day day--5']">
       <p class="text" aria-label="friday" role="presentation">
         <i>f</i><i>r</i><i>i</i>
       </p>
     </div>
-    <div :class="[{ active: activeDay === 6 }, 'day day--6']">
+    <div :class="[{ active: props.activeDay === 6 }, 'day day--6']">
       <p class="text" aria-label="saturday" role="presentation">
         <i>s</i><i>a</i><i>t</i>
       </p>
     </div>
-    <div :class="[{ active: activeDay === 7 }, 'day day--7']">
+    <div :class="[{ active: props.activeDay === 7 }, 'day day--7']">
       <p class="text" aria-label="sunday" role="presentation">
         <i>s</i><i>u</i><i>n</i>
       </p>
