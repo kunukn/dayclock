@@ -75,7 +75,7 @@ export default {
     }
 
     &.active {
-      color: white;
+      color: rgba(var(--color-bg), 1);
     }
 
     .text {

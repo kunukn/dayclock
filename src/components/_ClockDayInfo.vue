@@ -45,7 +45,7 @@ export default {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    color: white;
+    color: rgba(var(--color-bg), 1);
     font-weight: bold;
     .number {
       margin-right: 2px;
