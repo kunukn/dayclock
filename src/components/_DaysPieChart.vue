@@ -33,7 +33,7 @@ export default {
 
   background: radial-gradient(
     transparent,
-    rgba(var(--color-1), 0.5),
+    rgba(var(--color-1), 0.3),
     transparent
   );
 

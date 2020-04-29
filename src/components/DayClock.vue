@@ -186,6 +186,9 @@ export default {
   },
   created() {
     this.updateClock()
+
+    // this.selectTheme1()
+
     let params = getQueryParams()
     let root = document.documentElement
 
@@ -302,7 +305,7 @@ button,
 }
 
 .days-pie-chart-center-circle {
-  _display: none;
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
