@@ -1,5 +1,5 @@
 <template>
-  <div class="clock -center">
+  <div class="day-clock -center">
     <div class="container">
       <DaysPieChart :activeDay="activeDay" />
 
@@ -62,6 +62,13 @@
 </template>
 
 <script>
+import Days from './_Days'
+import DaysPieChart from './_DaysPieChart'
+import rangeMap from '@/utils/rangeMap'
+import getQueryParams from '@/utils/getQueryParams'
+import getDate from '@/utils/getDate'
+import getWeekNumber from '@/utils/getWeekNumber'
+
 const totalDaySeconds = 86400
 const totalWeekSeconds = 604800
 const daySeconds = 86400
@@ -73,8 +80,8 @@ const dayAngle = 51.4285714286 // 360 deg / 7 days
 export default {
   name: 'DayClock',
   components: {
-    DaysPieChart: () => import('./_DaysPieChart'),
-    Days: () => import('./_Days'),
+    Days,
+    DaysPieChart,
     ClockDayInfo: () => import('./_ClockDayInfo'),
   },
   props: {},
@@ -142,13 +149,15 @@ export default {
     },
     selectTheme1() {
       let root = document.documentElement
-      root.style.setProperty('--color-theme-1', '255, 105, 180')
-      root.style.setProperty('--color-theme-2', '255, 20, 147')
+      root.style.setProperty('--color-1', '255, 105, 180')
+      root.style.setProperty('--color-2', '255, 20, 147')
+      root.style.setProperty('--color-bg', '255, 255, 255')
     },
     selectTheme2() {
       let root = document.documentElement
-      root.style.setProperty('--color-theme-1', '0, 105, 180')
-      root.style.setProperty('--color-theme-2', '30,	144,	255')
+      root.style.setProperty('--color-1', '0, 105, 180')
+      root.style.setProperty('--color-2', '30,	144,	255')
+      root.style.setProperty('--color-bg', '255, 255, 255')
     },
     debugInputRange(event) {
       let date = new Date()
@@ -175,6 +184,20 @@ export default {
   },
   created() {
     this.updateClock()
+    let params = getQueryParams()
+    let root = document.documentElement
+
+    if (+params.numbers === 0) this.showPercentages = false
+
+    if (params.color1) {
+      root.style.setProperty('--color-1', params.color1)
+    }
+    if (params.color2) {
+      root.style.setProperty('--color-2', params.color2)
+    }
+    if (params.bg) {
+      root.style.setProperty('--color-bg', params.bg)
+    }
   },
   mounted() {
     const second = 1000
@@ -185,34 +208,6 @@ export default {
   beforeDestroy() {
     clearInterval(this.intervalKey)
   },
-}
-
-function getDate() {
-  let date = new Date()
-
-  return {
-    date,
-    d: date.getDay(),
-    h: date.getHours(),
-    m: date.getMinutes(),
-    s: date.getSeconds(),
-  }
-}
-
-// https://stackoverflow.com/a/6117889/815507
-function getWeekNumber(d) {
-  d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()))
-  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7))
-  var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1))
-  var weekNo = Math.ceil(((d - yearStart) / 86400000 + 1) / 7)
-  return weekNo
-}
-
-// map value x in range [a,b] to [c,d]
-function rangeMap(x, a, b, c, d) {
-  if (a === b) return c
-  if (c === d) return c
-  return ((x - a) / (b - a)) * (d - c) + c
 }
 </script>
 
@@ -227,11 +222,12 @@ button,
   outline: none;
 }
 
-.clock {
+.day-clock {
   width: 100vw;
   min-height: 100vh;
   _min-height: -webkit-fill-available;
   overflow: hidden;
+  background: rgba(var(--color-bg), 1);
 }
 
 .clock-arm {
@@ -241,7 +237,7 @@ button,
   left: calc(50% - #{$clock-arm-size / 2});
   width: $clock-arm-size;
   height: $clock-arm-size;
-  background: rgba(var(--color-theme-2), 1);
+  background: rgba(var(--color-2), 1);
   border-radius: 50%;
 
   &::before {
@@ -254,7 +250,7 @@ button,
     width: $clock-arm-size-width;
     border-radius: $clock-arm-size-width;
     height: $clock-arm-size-height;
-    background: rgba(var(--color-theme-2), 1);
+    background: rgba(var(--color-2), 1);
     z-index: -1;
   }
 }
@@ -279,7 +275,7 @@ button,
       height: 3em;
     }
     text-align: left;
-    color: rgba(var(--color-theme-2), 1);
+    color: rgba(var(--color-2), 1);
     font-weight: bold;
     font-size: 14px;
     @media (min-height: 500px) and (min-width: 500px) {
@@ -291,33 +287,6 @@ button,
     margin-right: 2px;
   }
 }
-
-// .clock-day-info {
-//   pointer-events: none;
-//   position: absolute;
-//   height: $size / 3;
-//   width: 40px;
-//   bottom: calc(50%);
-//   left: calc(50% - 20px);
-//   transform-origin: 50% 100%;
-//   font-size: 14px;
-//   @media (min-height: 500px) and (min-width: 500px) {
-//     font-size: 16px;
-//   }
-
-//   .day {
-//     line-height: 1;
-//     text-align: center;
-//     border-radius: 50%;
-//     width: 40px;
-//     height: 40px;
-//     color: white;
-//     font-weight: bold;
-//     .number {
-//       margin-right: 2px;
-//     }
-//   }
-// }
 
 .container {
   width: $size;
@@ -335,7 +304,7 @@ button,
   left: calc(50% - #{$size2 / 2});
   width: $size2;
   height: $size2;
-  background: white;
+  background: rgba(var(--color-bg), 1);
   border-radius: 50%;
   transform: rotate(45deg);
   box-shadow: 0 0 0 1px $border-color;

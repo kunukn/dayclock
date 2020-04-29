@@ -50,8 +50,8 @@ export default {
 
     &.active {
       background: radial-gradient(
-        rgba(var(--color-theme-1), 0.9),
-        rgba(var(--color-theme-1), 0.8)
+        rgba(var(--color-1), 0.9),
+        rgba(var(--color-1), 0.8)
       );
     }
   }

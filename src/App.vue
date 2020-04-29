@@ -17,10 +17,9 @@ export default {
 
 <style lang="scss">
 :root {
-  --color-theme-1: 255, 105, 180;
-  --color-theme-2: 255, 20, 147;
-  --color-theme-3: 219, 112, 147;
-  --color-background: 255, 255, 255;
+  --color-1: 255, 105, 180;
+  --color-2: 255, 20, 147;
+  --color-bg: 255, 255, 255;
 }
 
 * {
