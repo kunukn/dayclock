@@ -30,7 +30,6 @@ export default {
   pointer-events: none;
   position: absolute;
   height: calc(var(--size) / 3);
-  // $size / 3;
   width: 40px;
   bottom: calc(50%);
   left: calc(50% - 20px);

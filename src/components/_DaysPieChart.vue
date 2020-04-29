@@ -24,8 +24,8 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  width: $size;
-  height: $size;
+  width: var(--size);
+  height: var(--size);
   transform: rotate($day-skew);
   pointer-events: none;
   box-shadow: inset 0 0 0 1px rgba(var(--color-bg), 1),
@@ -40,13 +40,11 @@ export default {
   .day {
     position: absolute;
     box-shadow: 0 0 0 1px $border-color;
-    width: $size;
-    height: $size;
     width: 100%;
     height: 100%;
     transform-origin: 100% 100%;
-    left: calc(50% - #{$size});
-    top: calc(50% - #{$size});
+    left: calc(50% - var(--size));
+    top: calc(50% - var(--size));
     transition: background 500ms;
     pointer-events: all;
 

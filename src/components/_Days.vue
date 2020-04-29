@@ -53,8 +53,8 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  width: $size;
-  height: $size;
+  width: var(--size);
+  height: var(--size);
   transform: rotate(-26deg);
 
   .day {
@@ -62,8 +62,8 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    width: $size;
-    height: $size;
+    width: var(--size);
+    height: var(--size);
     text-align: center;
     color: rgba(var(--color-text), 1);
     transition: color 500ms;
