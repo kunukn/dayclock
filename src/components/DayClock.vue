@@ -355,8 +355,9 @@ button,
     margin-right: 6px;
   }
   button {
-    box-shadow: 0 0 0 1px gray;
+    box-shadow: 0 0 0 1px rgba(var(--color-text), 1);
     padding: 4px 8px;
+    color: rgba(var(--color-text), 1);
   }
 }
 </style>
