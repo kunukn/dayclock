@@ -1,9 +1,9 @@
 <template>
   <div class="day-clock -center">
     <div class="container">
-      <DaysPieChart :activeDay="activeDay" />
+      <DaysPieChart :activeDay="activeDay" :showDayGraph="showDayGraph" />
 
-      <Days :activeDay="activeDay" />
+      <Days :activeDay="activeDay" :showDayText="showDayText" />
 
       <div class="days-pie-chart-center-circle"></div>
 
@@ -93,6 +93,8 @@ export default {
       dayPercentage: 0,
       weekNumber: 0,
       showPercentages: true,
+      showDayText: true,
+      showDayGraph: true,
       isUpdateClockActive: true,
       isDebugActive: false,
     }
@@ -153,6 +155,7 @@ export default {
       root.style.setProperty('--color-1', '255, 105, 180')
       root.style.setProperty('--color-2', '255, 20, 147')
       root.style.setProperty('--color-bg', '255, 255, 255')
+      root.style.setProperty('--color-day-bg', '255, 255, 255')
       root.style.setProperty('--color-text', '128, 128, 128')
     },
     selectTheme2() {
@@ -160,6 +163,7 @@ export default {
       root.style.setProperty('--color-1', '0, 105, 180')
       root.style.setProperty('--color-2', '30,	144,	255')
       root.style.setProperty('--color-bg', '255, 255, 255')
+      root.style.setProperty('--color-day-bg', '255, 255, 255')
       root.style.setProperty('--color-text', '128, 128, 128')
     },
     debugInputRange(event) {
@@ -193,34 +197,48 @@ export default {
     let params = getQueryParams()
     let root = document.documentElement
 
-    if (+params.numbers === 0) this.showPercentages = false
+    let { numbers, days, graph, color1, color2, bg, daybg, text } = params
 
-    if (params.color1) {
-      let rgb = hexToRgb('#' + params.color1)
+    if (+numbers === 0) this.showPercentages = false
+
+    if (+days === 0) this.showDayText = false
+
+    if (+graph === 0) this.showDayGraph = false
+
+    if (color1) {
+      let rgb = hexToRgb('#' + color1)
       root.style.setProperty(
         '--color-1',
         rgb ? `${rgb.r},${rgb.g},${rgb.b}` : params.color1
       )
     }
-    if (params.color2) {
-      let rgb = hexToRgb('#' + params.color2)
+    if (color2) {
+      let rgb = hexToRgb('#' + color2)
       root.style.setProperty(
         '--color-2',
-        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : params.color2
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : color2
       )
     }
-    if (params.bg) {
-      let rgb = hexToRgb('#' + params.bg)
+    if (bg) {
+      let rgb = hexToRgb('#' + bg)
       root.style.setProperty(
         '--color-bg',
-        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : params.bg
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : bg
       )
     }
-    if (params.text) {
-      let rgb = hexToRgb('#' + params.text)
+    if (daybg) {
+      let rgb = hexToRgb('#' + daybg)
+      root.style.setProperty(
+        '--color-day-bg',
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : daybg
+      )
+    }
+
+    if (text) {
+      let rgb = hexToRgb('#' + text)
       root.style.setProperty(
         '--color-text',
-        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : params.text
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : text
       )
     }
   },
@@ -318,7 +336,8 @@ button,
   height: var(--size);
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 0 0 1px $border-color;
+  box-shadow: inset 0 0 0 0px rgba(var(--color-bg), 1),
+    0 0 0 0px rgba(var(--color-bg), 1);
 }
 
 .days-pie-chart-center-circle {
@@ -331,7 +350,6 @@ button,
   background: rgba(var(--color-bg), 1);
   border-radius: 50%;
   transform: translate(-50%, -50%) rotate(45deg);
-  box-shadow: 0 0 0 1px $border-color;
 }
 
 .theme-selector {

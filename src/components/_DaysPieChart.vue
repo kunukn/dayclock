@@ -1,12 +1,31 @@
-<template>
-  <div class="days-pie-chart">
-    <div :class="[{ active: activeDay === 1 }, 'day day--1']"><div></div></div>
-    <div :class="[{ active: activeDay === 2 }, 'day day--2']"><div></div></div>
-    <div :class="[{ active: activeDay === 3 }, 'day day--3']"><div></div></div>
-    <div :class="[{ active: activeDay === 4 }, 'day day--4']"><div></div></div>
-    <div :class="[{ active: activeDay === 5 }, 'day day--5']"><div></div></div>
-    <div :class="[{ active: activeDay === 6 }, 'day day--6']"><div></div></div>
-    <div :class="[{ active: activeDay === 7 }, 'day day--7']"><div></div></div>
+<template functional>
+  <div
+    :class="[
+      { 'days-pie-chart--show-day-graph': props.showDayGraph },
+      'days-pie-chart',
+    ]"
+  >
+    <div :class="[{ active: props.activeDay === 1 }, 'day day--1']">
+      <div></div>
+    </div>
+    <div :class="[{ active: props.activeDay === 2 }, 'day day--2']">
+      <div></div>
+    </div>
+    <div :class="[{ active: props.activeDay === 3 }, 'day day--3']">
+      <div></div>
+    </div>
+    <div :class="[{ active: props.activeDay === 4 }, 'day day--4']">
+      <div></div>
+    </div>
+    <div :class="[{ active: props.activeDay === 5 }, 'day day--5']">
+      <div></div>
+    </div>
+    <div :class="[{ active: props.activeDay === 6 }, 'day day--6']">
+      <div></div>
+    </div>
+    <div :class="[{ active: props.activeDay === 7 }, 'day day--7']">
+      <div></div>
+    </div>
   </div>
 </template>
 
@@ -15,6 +34,7 @@ export default {
   name: 'DaysPieChart',
   props: {
     activeDay: { type: Number, required: true },
+    showDayGraph: { type: Boolean, required: true },
   },
 }
 </script>
@@ -28,18 +48,17 @@ export default {
   height: var(--size);
   transform: rotate($day-skew);
   pointer-events: none;
-  box-shadow: inset 0 0 0 1px rgba(var(--color-bg), 1),
-    0 0 0 1px rgba(var(--color-bg), 1);
 
-  background: radial-gradient(
-    transparent,
-    rgba(var(--color-1), 0.3),
-    transparent
-  );
+  &--show-day-graph {
+    background: radial-gradient(
+      transparent,
+      rgba(var(--color-1), 0.3),
+      transparent
+    );
+  }
 
-  .day {
+  > .day {
     position: absolute;
-    box-shadow: 0 0 0 1px $border-color;
     width: 100%;
     height: 100%;
     transform-origin: 100% 100%;
@@ -54,9 +73,9 @@ export default {
       }
     }
 
-    > * {
+    > div {
       position: absolute;
-      background: rgba(var(--color-bg), 1);
+      background: rgba(var(--color-day-bg), 1);
       top: 0;
       left: 0;
       border-radius: 50%;
@@ -70,7 +89,7 @@ export default {
         rgba(var(--color-1), 1),
         transparent
       );
-      > * {
+      > div {
         background: transparent;
       }
     }
