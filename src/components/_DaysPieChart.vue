@@ -2,6 +2,7 @@
   <div
     :class="[
       { 'days-pie-chart--show-day-graph': props.showDayGraph },
+      { 'days-pie-chart--show-full-day-graph': props.showPie },
       'days-pie-chart',
     ]"
   >
@@ -34,7 +35,8 @@ export default {
   name: 'DaysPieChart',
   props: {
     activeDay: { type: Number, required: true },
-    showDayGraph: { type: Boolean, required: true },
+    showDayGraph: { type: Boolean, required: false },
+    showPie: { type: Boolean, required: false },
   },
 }
 </script>
@@ -92,6 +94,12 @@ export default {
       > div {
         background: transparent;
       }
+    }
+  }
+
+  &--show-full-day-graph {
+    > .day > div {
+      border-radius: 0;
     }
   }
 }

@@ -1,7 +1,11 @@
 <template>
   <div class="day-clock -center">
     <div class="container">
-      <DaysPieChart :activeDay="activeDay" :showDayGraph="showDayGraph" />
+      <DaysPieChart
+        :activeDay="activeDay"
+        :showDayGraph="showDayGraph"
+        :showPie="showPie"
+      />
 
       <Days :activeDay="activeDay" :showDayText="showDayText" />
 
@@ -95,6 +99,7 @@ export default {
       showPercentages: true,
       showDayText: true,
       showDayGraph: true,
+      showPie: false,
       isUpdateClockActive: true,
       isDebugActive: false,
     }
@@ -197,7 +202,7 @@ export default {
     let params = getQueryParams()
     let root = document.documentElement
 
-    let { numbers, days, graph, color1, color2, bg, daybg, text } = params
+    let { numbers, days, graph, color1, color2, bg, daybg, text, pie } = params
 
     if (+numbers === 0) this.showPercentages = false
 
@@ -240,6 +245,9 @@ export default {
         '--color-text',
         rgb ? `${rgb.r},${rgb.g},${rgb.b}` : text
       )
+    }
+    if (+pie) {
+      this.showPie = true
     }
   },
   mounted() {
