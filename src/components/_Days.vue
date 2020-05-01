@@ -116,7 +116,7 @@ export default {
 
     .text {
       pointer-events: all;
-      padding-top: $font-air;
+      padding-top: var(--font-air);
       user-select: none;
       text-transform: uppercase;
 
@@ -124,7 +124,7 @@ export default {
       line-height: 1;
 
       i {
-        font-size: $font-size;
+        font-size: var(--font-size);
         line-height: inherit;
         font-style: normal;
         display: inline-block;
@@ -134,7 +134,7 @@ export default {
           transform: rotate(-$font-deg);
         }
         &:nth-child(2) {
-          transform: translateY(-$font-y);
+          transform: translateY(var(--font-y-inv));
         }
         &:nth-child(3) {
           transform: rotate($font-deg);
@@ -146,7 +146,7 @@ export default {
     &--5 {
       .text {
         padding-top: 0;
-        padding-bottom: $font-air;
+        padding-bottom: var(--font-air);
         transform: rotate(0.5turn);
 
         i {
@@ -154,7 +154,7 @@ export default {
             transform: rotate($font-deg);
           }
           &:nth-child(2) {
-            transform: translateY($font-y);
+            transform: translateY(var(--font-y));
           }
           &:nth-child(3) {
             transform: rotate(-$font-deg);
