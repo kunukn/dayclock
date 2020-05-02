@@ -1,0 +1,20 @@
+{
+    "workbench.tree.indent": 25,
+    "eslint.run": "onType",
+    "eslint.validate": [
+        "vue",
+        "html",
+        "javascript"
+    ],
+    "editor.formatOnSave": false,
+    "vetur.format.defaultFormatter.html": "none",
+    "vetur.format.defaultFormatter.js": "none",
+    "vetur.validation.template": false,
+    "vetur.completion.useScaffoldSnippets": false,
+    "editor.codeActionsOnSave": {
+        // https://github.com/prettier/prettier-vscode#linter-integration
+        "source.fixAll.eslint": true,
+        "source.fixAll.tslint": true,
+        "source.fixAll.stylelint": true
+    },
+}
