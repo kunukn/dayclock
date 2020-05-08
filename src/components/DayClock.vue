@@ -65,9 +65,9 @@
   </div>
 </template>
 
-<script>
-import Days from './_Days'
-import DaysPieChart from './_DaysPieChart'
+<script lang="ts">
+import Days from './_Days.vue'
+import DaysPieChart from './_DaysPieChart.vue'
 import rangeMap from '@/utils/rangeMap'
 import getQueryParams from '@/utils/getQueryParams'
 import getDate from '@/utils/getDate'
@@ -87,7 +87,7 @@ export default {
   components: {
     Days,
     DaysPieChart,
-    ClockDayInfo: () => import('./_ClockDayInfo'),
+    ClockDayInfo: () => import('./_ClockDayInfo.vue'),
   },
   props: {},
   data() {

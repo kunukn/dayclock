@@ -52,7 +52,12 @@ export default {
   pointer-events: none;
 
   &--show-day-graph {
-    background: radial-gradient(transparent, rgba(var(--color-1), 0.3));
+    background: radial-gradient(
+      transparent 30%,
+      rgba(var(--color-1), 0.3) 40%,
+      transparent,
+      transparent
+    );
   }
 
   > .day {
@@ -95,7 +100,7 @@ export default {
 
   &--show-full-day-graph {
     > .day > div {
-      border-radius: 0;
+      border-radius: none;
     }
   }
 }

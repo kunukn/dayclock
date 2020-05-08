@@ -1,4 +1,5 @@
 // https://stackoverflow.com/a/6117889/815507
+// @ts-nocheck
 export default function getWeekNumber(d) {
   d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()))
   d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7))
