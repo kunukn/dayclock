@@ -2,5 +2,13 @@
   "version": 2,
   "regions": ["bru1"],
   "builds": [{ "src": "package.json", "use": "@vercel/static-build" }],
-  "env": {}
+  "env": {},
+  "routes": [
+    {
+      "src": "/",
+      "headers": {
+        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate"
+      }
+    }
+  ]
 }
