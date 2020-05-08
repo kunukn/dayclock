@@ -160,7 +160,7 @@ export default {
       root.style.setProperty('--color-1', '255, 105, 180')
       root.style.setProperty('--color-2', '255, 20, 147')
       root.style.setProperty('--color-bg', '255, 255, 255')
-      root.style.setProperty('--color-day-bg', '255, 255, 255')
+      root.style.setProperty('--color-day-bg', '' /*'255, 255, 255'*/)
       root.style.setProperty('--color-text', '128, 128, 128')
     },
     selectTheme2() {
@@ -168,7 +168,7 @@ export default {
       root.style.setProperty('--color-1', '0, 105, 180')
       root.style.setProperty('--color-2', '30,	144,	255')
       root.style.setProperty('--color-bg', '255, 255, 255')
-      root.style.setProperty('--color-day-bg', '255, 255, 255')
+      root.style.setProperty('--color-day-bg', '' /*'255, 255, 255'*/)
       root.style.setProperty('--color-text', '128, 128, 128')
     },
     debugInputRange(event) {

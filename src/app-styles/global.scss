@@ -4,13 +4,13 @@
   --font-air: calc(var(--size) * 0.0375);
   --font-y: calc(var(--size) * 0.0125);
   --font-y-inv: calc(var(--size) * -0.0125);
-  
+
   --size-inner-circle: 30vmin;
   --color-1: 0, 105, 180;
-  --color-2: 30,	144,	255;
+  --color-2: 30, 144, 255;
   --color-bg: 255, 255, 255;
   --color-text: 128, 128, 128;
-  --color-day-bg: 255, 255, 255;
+  --color-day-bg: transparent; //255, 255, 255;
 
   // @media(min-width: 1000px){
   //   --size: 1000px;
@@ -29,7 +29,7 @@
   box-sizing: border-box;
 }
 
-html{
+html {
 }
 
 body {
