@@ -7,25 +7,32 @@
     ]"
   >
     <div :class="[{ active: props.activeDay === 1 }, 'day day--1']">
-      <div></div>
+      <div class="day-inner"></div>
+      <div class="day-inner-2"></div>
     </div>
     <div :class="[{ active: props.activeDay === 2 }, 'day day--2']">
-      <div></div>
+      <div class="day-inner"></div>
+      <div class="day-inner-2"></div>
     </div>
     <div :class="[{ active: props.activeDay === 3 }, 'day day--3']">
-      <div></div>
+      <div class="day-inner"></div>
+      <div class="day-inner-2"></div>
     </div>
     <div :class="[{ active: props.activeDay === 4 }, 'day day--4']">
-      <div></div>
+      <div class="day-inner"></div>
+      <div class="day-inner-2"></div>
     </div>
     <div :class="[{ active: props.activeDay === 5 }, 'day day--5']">
-      <div></div>
+      <div class="day-inner"></div>
+      <div class="day-inner-2"></div>
     </div>
     <div :class="[{ active: props.activeDay === 6 }, 'day day--6']">
-      <div></div>
+      <div class="day-inner"></div>
+      <div class="day-inner-2"></div>
     </div>
     <div :class="[{ active: props.activeDay === 7 }, 'day day--7']">
-      <div></div>
+      <div class="day-inner"></div>
+      <div class="day-inner-2"></div>
     </div>
   </div>
 </template>
@@ -69,14 +76,9 @@ export default {
     top: calc(50% - var(--size));
     transition: background 500ms;
     pointer-events: all;
+    overflow: hidden;
 
-    @for $i from 1 through 7 {
-      &--#{$i} {
-        transform: rotate($day-angle * $i) skew($day-skew);
-      }
-    }
-
-    > div {
+    > .day-inner {
       position: absolute;
       background: rgba(var(--color-day-bg), 1);
       top: 0;
@@ -85,15 +87,44 @@ export default {
       width: 100%;
       height: 100%;
     }
+    > .day-inner-2 {
+      position: absolute;
+      display: none;
+    }
+
+    @for $i from 1 through 7 {
+      &--#{$i} {
+        transform: rotate($day-angle * $i) skew($day-skew);
+        > .day-inner-2 {
+          transform: skew(-$day-skew) translate(0, 0);
+        }
+      }
+    }
 
     &.active {
-      background: radial-gradient(
+      _background: radial-gradient(
         transparent,
         rgba(var(--color-1), 1),
         transparent
       );
-      > div {
+      > .day-inner {
         background: transparent;
+      }
+      > .day-inner-2 {
+        display: block;
+        bottom: calc(var(--size) / -2);
+        right: calc(var(--size) / -2);
+        border-radius: 50%;
+        width: calc(var(--size) / 1);
+        height: calc(var(--size) / 1);
+        box-shadow: inset 0 0 0 1px var(--color-bg);
+        box-shadow: inset 0 0 40px var(--color-1);
+        background: radial-gradient(
+          transparent,
+          rgba(var(--color-1), 1) 40%,
+          transparent 80%
+        );
+        overflow: hidden;
       }
     }
   }
