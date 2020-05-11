@@ -102,11 +102,7 @@ export default {
     }
 
     &.active {
-      _background: radial-gradient(
-        transparent,
-        rgba(var(--color-1), 1),
-        transparent
-      );
+      background: radial-gradient(transparent, rgba(var(--color-1), 0.15));
       > .day-inner {
         background: transparent;
       }
@@ -117,10 +113,10 @@ export default {
         border-radius: 50%;
         width: calc(var(--size) / 1);
         height: calc(var(--size) / 1);
-        box-shadow: inset 0 0 0 1px var(--color-bg);
+        __box-shadow: inset 0 0 0 1px var(--color-bg);
         box-shadow: inset 0 0 40px var(--color-1);
         background: radial-gradient(
-          transparent,
+          transparent 20%,
           rgba(var(--color-1), 1) 40%,
           transparent 80%
         );
