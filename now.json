@@ -6,7 +6,7 @@
     {
       "src": "/",
       "headers": {
-        "cache-control": "s-maxage=31536000, maxage=0, stale-while-revalidate"
+        "cache-control": "maxage=0, must-revalidate"
       }
     }
   ]
