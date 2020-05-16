@@ -14,7 +14,9 @@
 </template>
 
 <script lang="ts">
-export default {
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'ClockDayInfo',
   props: {
     clockDayInfoStyle: { type: Object, required: true },
@@ -22,7 +24,7 @@ export default {
     dayPercentageDisplay: { type: Number, required: true },
     showPercentages: { type: Boolean, required: true },
   },
-}
+})
 </script>
 
 <style scoped lang="scss">

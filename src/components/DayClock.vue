@@ -66,6 +66,8 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
+
 import Days from './_Days.vue'
 import DaysPieChart from './_DaysPieChart.vue'
 import rangeMap from '@/utils/rangeMap'
@@ -82,7 +84,7 @@ const minuteSeconds = 60
 
 const dayAngle = 51.4285714286 // 360 deg / 7 days
 
-export default {
+export default Vue.extend({
   name: 'DayClock',
   components: {
     Days,
@@ -160,7 +162,7 @@ export default {
       root.style.setProperty('--color-1', '255, 105, 180')
       root.style.setProperty('--color-2', '255, 20, 147')
       root.style.setProperty('--color-bg', '255, 255, 255')
-      root.style.setProperty('--color-day-bg', '' /*'255, 255, 255'*/)
+      root.style.setProperty('--color-day-bg', '')
       root.style.setProperty('--color-text', '128, 128, 128')
     },
     selectTheme2() {
@@ -168,7 +170,7 @@ export default {
       root.style.setProperty('--color-1', '0, 105, 180')
       root.style.setProperty('--color-2', '30,	144,	255')
       root.style.setProperty('--color-bg', '255, 255, 255')
-      root.style.setProperty('--color-day-bg', '' /*'255, 255, 255'*/)
+      root.style.setProperty('--color-day-bg', '')
       root.style.setProperty('--color-text', '128, 128, 128')
     },
     debugInputRange(event) {
@@ -259,7 +261,7 @@ export default {
   beforeDestroy() {
     clearInterval(this.intervalKey)
   },
-}
+})
 </script>
 
 <style scoped lang="scss">

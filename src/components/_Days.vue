@@ -74,13 +74,15 @@
 </template>
 
 <script lang="ts">
-export default {
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'Days',
   props: {
     activeDay: { type: Number, required: true },
     showDayText: { type: Boolean, required: true },
   },
-}
+})
 </script>
 
 <style scoped lang="scss">

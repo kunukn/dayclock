@@ -38,14 +38,16 @@
 </template>
 
 <script lang="ts">
-export default {
+import Vue from 'vue'
+
+export default Vue.extend({
   name: 'DaysPieChart',
   props: {
     activeDay: { type: Number, required: true },
     showDayGraph: { type: Boolean, required: false },
     showPie: { type: Boolean, required: false },
   },
-}
+})
 </script>
 
 <style scoped lang="scss">
