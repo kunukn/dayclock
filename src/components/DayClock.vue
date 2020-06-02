@@ -89,7 +89,7 @@ export default Vue.extend({
   components: {
     Days,
     DaysPieChart,
-    ClockDayInfo: () => import('./_ClockDayInfo.vue'),
+    ClockDayInfo: () => import('@/components/_ClockDayInfo.vue'),
   },
   props: {},
   data() {
