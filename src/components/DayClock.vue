@@ -1,5 +1,6 @@
 <template>
   <div class="day-clock -center">
+    <div class="strap" />
     <div class="container">
       <DaysPieChart
         :activeDay="activeDay"
@@ -215,6 +216,7 @@ export default Vue.extend({
       text,
       pie,
       border,
+      strap,
     } = params
 
     if (+numbers === 0) this.showPercentages = false
@@ -260,6 +262,14 @@ export default Vue.extend({
       )
     }
 
+    if (strap) {
+      let rgb = hexToRgb('#' + strap)
+      root.style.setProperty(
+        '--color-strap',
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : strap
+      )
+    }
+
     if (text) {
       let rgb = hexToRgb('#' + text)
       root.style.setProperty(
@@ -284,6 +294,16 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
+.strap {
+  background-color: rgba(var(--color-strap), 1);
+  width: 30vw;
+  height: 100vh;
+  transform: translateX(-50%) translateZ(-2px);
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
+
 button,
 .button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -300,6 +320,8 @@ button,
   _min-height: -webkit-fill-available;
   overflow: hidden;
   background: rgba(var(--color-bg), 1);
+  z-index: -1;
+  transform: translateZ(0);
 }
 
 .clock-arm {
@@ -367,6 +389,7 @@ button,
   overflow: hidden;
   box-shadow: inset 0 0 0 0px rgba(var(--color-bg), 1);
   border: 2px solid rgba(var(--color-border), 1);
+  background: rgba(var(--color-bg), 1);
 }
 
 .days-pie-chart-center-circle {

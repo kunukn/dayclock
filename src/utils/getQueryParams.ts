@@ -11,6 +11,7 @@ type t = {
   text?: any
   pie?: any
   border?: any
+  strap?: any
 }
 
 export default () => {
