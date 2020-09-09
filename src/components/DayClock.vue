@@ -215,6 +215,7 @@ export default Vue.extend({
       pagebg,
       daybg,
       text,
+      activetext,
       pie,
       border,
       strap,
@@ -283,6 +284,13 @@ export default Vue.extend({
       root.style.setProperty(
         '--color-text',
         rgb ? `${rgb.r},${rgb.g},${rgb.b}` : text
+      )
+    }
+    if (activetext) {
+      let rgb = hexToRgb('#' + activetext)
+      root.style.setProperty(
+        '--color-active-text',
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : activetext
       )
     }
     if (+pie) {

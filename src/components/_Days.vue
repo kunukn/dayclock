@@ -113,7 +113,7 @@ export default Vue.extend({
     }
 
     &.active {
-      color: rgba(var(--color-bg), 1);
+      color: rgba(var(--color-active-text, --color-bg), 1);
     }
 
     .text {

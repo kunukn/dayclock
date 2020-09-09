@@ -10,6 +10,7 @@ type t = {
   pagebg?: any
   daybg?: any
   text?: any
+  activetext?: any
   pie?: any
   border?: any
   strap?: any
