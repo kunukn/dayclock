@@ -328,7 +328,6 @@ button,
   _min-height: -webkit-fill-available;
   overflow: hidden;
   background: rgba(var(--color-page-bg), 1);
-  z-index: -1;
   transform: translateZ(0);
 }
 
