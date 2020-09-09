@@ -10,6 +10,7 @@ type t = {
   daybg?: any
   text?: any
   pie?: any
+  border?: any
 }
 
 export default () => {

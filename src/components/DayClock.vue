@@ -204,7 +204,18 @@ export default Vue.extend({
     let params = getQueryParams()
     let root = document.documentElement
 
-    let { numbers, days, graph, color1, color2, bg, daybg, text, pie } = params
+    let {
+      numbers,
+      days,
+      graph,
+      color1,
+      color2,
+      bg,
+      daybg,
+      text,
+      pie,
+      border,
+    } = params
 
     if (+numbers === 0) this.showPercentages = false
 
@@ -238,6 +249,14 @@ export default Vue.extend({
       root.style.setProperty(
         '--color-day-bg',
         rgb ? `${rgb.r},${rgb.g},${rgb.b}` : daybg
+      )
+    }
+
+    if (border) {
+      let rgb = hexToRgb('#' + border)
+      root.style.setProperty(
+        '--color-border',
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : border
       )
     }
 
@@ -346,8 +365,8 @@ button,
   height: var(--size);
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: inset 0 0 0 0px rgba(var(--color-bg), 1),
-    0 0 0 0px rgba(var(--color-bg), 1);
+  box-shadow: inset 0 0 0 0px rgba(var(--color-bg), 1);
+  border: 2px solid rgba(var(--color-border), 1);
 }
 
 .days-pie-chart-center-circle {
