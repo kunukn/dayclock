@@ -7,6 +7,7 @@ type t = {
   color1?: any
   color2?: any
   bg?: any
+  pagebg?: any
   daybg?: any
   text?: any
   pie?: any

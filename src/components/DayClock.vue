@@ -212,6 +212,7 @@ export default Vue.extend({
       color1,
       color2,
       bg,
+      pagebg,
       daybg,
       text,
       pie,
@@ -244,6 +245,13 @@ export default Vue.extend({
       root.style.setProperty(
         '--color-bg',
         rgb ? `${rgb.r},${rgb.g},${rgb.b}` : bg
+      )
+    }
+    if (pagebg) {
+      let rgb = hexToRgb('#' + pagebg)
+      root.style.setProperty(
+        '--color-page-bg',
+        rgb ? `${rgb.r},${rgb.g},${rgb.b}` : pagebg
       )
     }
     if (daybg) {
@@ -319,7 +327,7 @@ button,
   min-height: 100vh;
   _min-height: -webkit-fill-available;
   overflow: hidden;
-  background: rgba(var(--color-bg), 1);
+  background: rgba(var(--color-page-bg), 1);
   z-index: -1;
   transform: translateZ(0);
 }
