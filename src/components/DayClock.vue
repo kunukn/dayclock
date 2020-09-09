@@ -296,7 +296,7 @@ export default Vue.extend({
 <style scoped lang="scss">
 .strap {
   background-color: rgba(var(--color-strap), 1);
-  width: 30vw;
+  width: 30vmin;
   height: 100vh;
   transform: translateX(-50%) translateZ(-2px);
   position: absolute;
