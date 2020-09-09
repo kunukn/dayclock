@@ -4,7 +4,7 @@ Demo:
 
 - https://dayclock.app
 - https://dayclock.app/?numbers=0&color1=ff0&color2=f80&bg=000&daybg=000&text=fff
-- https://dayclock.app/?numbers=0&color1=f80&color2=f80&bg=555&text=333&border=000&strap=f80&pagebg=eee&activetext=fff
+- https://dayclock.app/?numbers=0&color1=ccc&color2=f80&text=aaa&border=000&strap=f80&pagebg=eee&activetext=f80
 - https://dayclock.app/?numbers=0&color1=255,255,255&color2=200,200,0&bg=0,0,0&daybg=0,0,0&text=255,255,255
 - https://dayclock.app/?numbers=0&graph=0&daybg=255,200,255&color1=ff821c&color2=ff821c
 - https://dayclock.app/?numbers=0&graph=0&daybg=301934&color1=255,100,155&color2=255,140,155&text=170,170,170&pie=1
